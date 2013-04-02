@@ -1,11 +1,15 @@
 #editor {
   font-family: 'Consolas', monospace;
   position: relative;
-  min-height: 565px;
+  min-height: 560px;
   font-size: 20px;
   resize:vertical;
   line-height: 1.4em;
-  margin-bottom: 7px;
+  margin-bottom: 0;
+}
+
+form {
+	margin-bottom: 10px;
 }
 
 .reveal-modal.tiny {

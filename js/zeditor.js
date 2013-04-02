@@ -73,6 +73,17 @@ Zepto(function() {
 
 	// Save file
 	$('#btn-save').on('click', function() {
-		$('#modal-sign').foundation('reveal', 'open');
+		var text = $('#editor').val();
+		$('#btn-save').text('Saving...');
+		if ($('#code').val() == '') {
+			$.post('/create', {content: text}, function(response) {
+				// Redirect to the saved zed
+			});
+		}
+		else {
+			$.post('/update/'+$('#code').val(), {content: text}, function(response) {
+				// Make a small notification for save
+			});
+		}
 	});
 });
