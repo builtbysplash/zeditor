@@ -27,7 +27,7 @@
           <!-- Title Area -->
           <li class="name">
             <h1>
-              <a href="#">Zeditor</a>
+              <a class="zeditor-link" href="<?php echo URL ?>">Zeditor</a>
             </h1>
           </li>
           <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
@@ -49,7 +49,7 @@
       <!-- End Top Bar -->
       <form>
         <input type="hidden" value="<?php echo $id; ?>" name="id" id="id"/>
-        <textarea id="editor" placeholder="Write some Z in here"><?php echo $text; ?></textarea>
+        <textarea id="editor" name="content" placeholder="Write some Z in here"><?php echo $content; ?></textarea>
       </form>
     </div>
   </div>
@@ -62,7 +62,7 @@
         <div class="large-12 columns">
           <p>
             <span>&copy; Copyright no one at all.</span>
-            <a href="#">Built by Splash</a>
+            <a class="zeditor-link" href="#">Built by Splash</a>
           </p>
         </div>
       </footer>

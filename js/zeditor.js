@@ -49,6 +49,9 @@ function tokensToChar() {
 }
 
 Zepto(function() {
+	$('a:not(.zeditor-link)').on('click', function(e) {
+		e.preventDefault();
+	});
 	$('#editor').val(tokensToChar());
 	// Handle input if pasted
 	$('#editor').on('paste', function() {		
@@ -78,7 +81,9 @@ Zepto(function() {
 		$('#btn-save').text('Saving...');
 		if ($('#id').val() == '') {
 			$.post('/create', {content: text}, function(response) {
+				var id = response.replace(/["']{1}/g, "");
 				// Redirect to the saved zed
+				window.location.href = "/"+encodeURIComponent(id);
 			});
 		}
 		else {
