@@ -40,23 +40,24 @@ var replacements = {
 	"psi":"ψ"
 };
 
+function tokensToChar() {
+	var text = $('#editor').val();
+	for (var replacement in replacements) {
+		text = text.replace(new RegExp(':'+replacement, 'g'), replacements[replacement]);
+	}
+	return text;
+}
+
 Zepto(function() {
+	$('#editor').val(tokensToChar());
 	// Handle input if pasted
-	$('#editor').on('paste', function() {
-		var text = $('#editor').val();
-		for (var replacement in replacements) {
-			text = text.replace(new RegExp(':'+replacement, 'g'), replacements[replacement]);
-		}
-		$('#editor').val(text);
+	$('#editor').on('paste', function() {		
+		$('#editor').val(tokensToChar());
 	});
 
 	// Handle typed input
 	$('#editor').on('keyup', function() {
-		var text = $('#editor').val();
-		for (var replacement in replacements) {
-			text = text.replace(new RegExp(':'+replacement, 'g'), replacements[replacement]);
-		}
-		$('#editor').val(text);
+		$('#editor').val(tokensToChar());
 	});
 
 	// Full screen button
