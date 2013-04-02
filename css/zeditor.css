@@ -1,10 +1,30 @@
 #editor {
   font-family: 'Consolas', monospace;
   position: relative;
-  min-height: 600px;
+  min-height: 565px;
   font-size: 20px;
   resize:vertical;
   line-height: 1.4em;
+  margin-bottom: 7px;
+}
+
+.reveal-modal.tiny {
+	width: 30%;
+	margin-left: -15%;
+}
+
+p.light {
+	color: #aaa;
+	font-size: 12px;
+}
+
+form.modal, form.modal * {
+	margin-bottom: 0;
+}
+
+footer p {
+	font-size: 12px;
+	text-align: center;
 }
 
 .row {	

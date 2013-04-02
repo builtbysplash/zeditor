@@ -70,4 +70,9 @@ Zepto(function() {
 			$('#btn-full').text('Minimize');
 		}
 	});
+
+	// Save file
+	$('#btn-save').on('click', function() {
+		$('#modal-sign').foundation('reveal', 'open');
+	});
 });

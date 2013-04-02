@@ -18,9 +18,25 @@
 
 </head>
 <body>
+
+  <!-- Modals -->
+  <div id="modal-sign" class="reveal-modal tiny">
+    <h5>Hey stranger! What's your name?</h5>
+    <p class="light">We only need it to use your creations again.</p>
+    <form class="modal">
+      <div class="row collapse">
+        <div class="small-8 columns">
+          <input placeholder="Your name here" type="text" name="username"/>
+        </div>
+        <div class="small-4 columns">
+          <a href="#" class="button prefix">That's me</a>
+        </div>
+      </div>   
+    </form>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
   
   <!-- Content -->
-
   <div class="row">
     <div class="large-12 columns">
       <!-- Navigation -->      
@@ -40,11 +56,7 @@
           <ul class="right">
             <li class="divider"></li>
             <li>
-              <a href="#">Open file</a>
-            </li>
-            <li class="divider"></li>
-            <li>
-              <a href="#">Save file</a>
+              <a href="#" id="btn-save">Save</a>
             </li>
             <li>
               <a href="#" id="btn-full">Maximize</a>
@@ -63,19 +75,10 @@
 
       <footer class="row">
         <div class="large-12 columns">
-            <div class="row">
-
-              <div class="large-6 columns">
-                  <p>&copy; Copyright no one at all.</p>
-              </div>
-
-              <div class="large-6 small-12 columns">
-                  <ul class="inline-list right">
-                    <li><a href="#">Built by Splash</a></li>
-                  </ul>
-              </div>
-
-            </div>
+          <p>
+            <span>&copy; Copyright no one at all.</span>
+            <a href="#">Built by Splash</a>
+          </p>
         </div>
       </footer>
 
