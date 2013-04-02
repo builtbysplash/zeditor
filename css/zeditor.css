@@ -1,0 +1,12 @@
+#editor {
+  font-family: 'Consolas', monospace;
+  position: relative;
+  min-height: 600px;
+  font-size: 20px;
+  resize:vertical;
+  line-height: 1.4em;
+}
+
+nav.top-bar {
+  margin-bottom: 0;
+}
