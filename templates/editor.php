@@ -48,7 +48,7 @@
       </nav>     
       <!-- End Top Bar -->
       <form>
-        <input type="hidden" value="<?php echo $id; ?>" name="code" id="code"/>
+        <input type="hidden" value="<?php echo $id; ?>" name="id" id="id"/>
         <textarea id="editor" placeholder="Write some Z in here"><?php echo $text; ?></textarea>
       </form>
     </div>

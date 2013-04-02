@@ -8,6 +8,10 @@
   margin-bottom: 0;
 }
 
+#editor.full {
+	font-size: 36px;
+}
+
 form {
 	margin-bottom: 10px;
 }

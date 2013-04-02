@@ -62,12 +62,12 @@ Zepto(function() {
 
 	// Full screen button
 	$('#btn-full').on('click', function() {
-		if ($('.row').hasClass('full')) {
-			$('.row').removeClass('full');
+		if ($('#editor').hasClass('full')) {
+			$('.row, #editor').removeClass('full');
 			$('#btn-full').text('Maximize');
 		}
 		else {
-			$('.row').addClass('full');
+			$('.row, #editor').addClass('full');
 			$('#btn-full').text('Minimize');
 		}
 	});
@@ -76,13 +76,13 @@ Zepto(function() {
 	$('#btn-save').on('click', function() {
 		var text = $('#editor').val();
 		$('#btn-save').text('Saving...');
-		if ($('#code').val() == '') {
+		if ($('#id').val() == '') {
 			$.post('/create', {content: text}, function(response) {
 				// Redirect to the saved zed
 			});
 		}
 		else {
-			$.post('/update/'+$('#code').val(), {content: text}, function(response) {
+			$.post('/update/'+$('#id').val(), {content: text}, function(response) {
 				// Make a small notification for save
 			});
 		}
