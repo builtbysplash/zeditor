@@ -1,8 +1,8 @@
 $(document).foundation();
 
 var replacements = {
-  "int":"ℤ",
-  "nat":"ℕ",
+	"int":"ℤ",
+	"nat":"ℕ",
 	"uexists":"∃₁",
 	"all":"∀",
 	"exists":"∃",
@@ -23,7 +23,7 @@ var replacements = {
 	"Delta":"Δ",
 	"Xi":"Ξ",
 	"leq":"≤",
-  "geq":"≥",
+	"geq":"≥",
 	"imp":"⇒",
 	"defeq":"≙",
 	"tuple":"↦",
@@ -34,25 +34,40 @@ var replacements = {
 	"inv":"⁻¹",
 	"domr":"◁",
 	"ranr":"▷",
-  "domar":"domar!",
-  "ranar":"ranar!",
+	"domar":"domar!",
+	"ranar":"ranar!",
 	"phi":"ϕ",
 	"psi":"ψ"
 };
 
 Zepto(function() {
-  $('#editor').on('paste', function() {
-    var text = $('#editor').val();
-    for (var replacement in replacements) {
-      text = text.replace(new RegExp(':'+replacement, 'g'), replacements[replacement]);
-    }
-    $('#editor').val(text);
-  });
-  $('#editor').on('keyup', function() {
-    var text = $('#editor').val();
-    for (var replacement in replacements) {
-      text = text.replace(new RegExp(':'+replacement, 'g'), replacements[replacement]);
-    }
-    $('#editor').val(text);
-  });
+	// Handle input if pasted
+	$('#editor').on('paste', function() {
+		var text = $('#editor').val();
+		for (var replacement in replacements) {
+			text = text.replace(new RegExp(':'+replacement, 'g'), replacements[replacement]);
+		}
+		$('#editor').val(text);
+	});
+
+	// Handle typed input
+	$('#editor').on('keyup', function() {
+		var text = $('#editor').val();
+		for (var replacement in replacements) {
+			text = text.replace(new RegExp(':'+replacement, 'g'), replacements[replacement]);
+		}
+		$('#editor').val(text);
+	});
+
+	// Full screen button
+	$('#btn-full').on('click', function() {
+		if ($('.row').hasClass('full')) {
+			$('.row').removeClass('full');
+			$('#btn-full').text('Maximize');
+		}
+		else {
+			$('.row').addClass('full');
+			$('#btn-full').text('Minimize');
+		}
+	});
 });

@@ -7,6 +7,17 @@
   line-height: 1.4em;
 }
 
+.row {	
+	-o-transition:all .3s ease-in-out;
+	-moz-transition:all .3s ease-in-out;
+	-webkit-transition:all .3s ease-in-out;
+	transition:all .3s ease-in-out;
+}
+
+.row.full {
+	max-width: 100%;
+}
+
 nav.top-bar {
   margin-bottom: 0;
 }
