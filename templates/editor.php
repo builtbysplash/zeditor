@@ -38,8 +38,9 @@
           <ul class="right">
             <li class="divider"></li>
             <li>
-              <a href="#" id="btn-save">Save</a>
+              <a href="#" id="btn-save"><?php echo ($id == '') ? 'Save' : 'Fork' ?></a>
             </li>
+            <li class="divider"></li>
             <li>
               <a href="#" id="btn-full">Maximize</a>
             </li>
@@ -49,7 +50,7 @@
       <!-- End Top Bar -->
       <form>
         <input type="hidden" value="<?php echo $id; ?>" name="id" id="id"/>
-        <textarea id="editor" name="content" placeholder="Write some Z in here"><?php echo $content; ?></textarea>
+        <textarea <?php echo ($id != '') ? 'disabled': '' ?> id="editor" name="content" placeholder="Write some Z in here"><?php echo $content; ?></textarea>
       </form>
     </div>
   </div>
