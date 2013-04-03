@@ -112,4 +112,10 @@ Zepto(function() {
             $('#btn-full').text('Minimize');
         }
     });
+
+    $('#editor').focus();
 });
+
+window.onload = function() {
+    $('#container').removeClass('hidden');
+};

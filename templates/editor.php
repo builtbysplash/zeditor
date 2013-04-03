@@ -19,7 +19,7 @@
 <body>
 
   <!-- Content -->
-  <div class="row">
+  <div id="container" class="row hidden">
     <div class="large-12 columns">
       <!-- Navigation -->      
       <nav class="top-bar">
@@ -53,8 +53,6 @@
         <textarea <?php echo ($id != '') ? 'disabled': '' ?> id="editor" name="content" placeholder="Write some Z in here"><?php echo $content; ?></textarea>
       </form>
     </div>
-  </div>
-
     <!-- End Content -->
 
     <!-- Footer -->
@@ -69,8 +67,6 @@
       </footer>
 
     <!-- End Footer -->
-
-    </div>
   </div>
 
   <script>

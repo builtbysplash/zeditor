@@ -1,3 +1,7 @@
+#container.hidden {
+    opacity: 0;
+}
+
 #editor {
   font-family: 'DejaVu Sans Mono', 'Consolas', monospace;
   position: relative;
