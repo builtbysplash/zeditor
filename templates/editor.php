@@ -38,7 +38,7 @@
           <ul class="right">
             <li class="divider"></li>
             <li>
-              <a href="#" id="btn-save"><?php echo ($id == '') ? 'Save' : 'Fork' ?></a>
+              <a href="#" id="btn-save" <?php echo ($id == '') ? 'class="disabled"' : '' ?>><?php echo ($id == '') ? 'Save' : 'Fork' ?></a>
             </li>
             <li class="divider"></li>
             <li>

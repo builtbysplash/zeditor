@@ -16,6 +16,11 @@ textarea[disabled] {
 	font-size: 36px;
 }
 
+#btn-save.disabled {
+    color: #666;
+    cursor: no-drop;
+}
+
 form {
 	margin-bottom: 10px;
 }

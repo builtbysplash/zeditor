@@ -66,13 +66,37 @@ Zepto(function() {
     });
 
     // Handle input if pasted
-    $('#editor').on('paste', function() {       
+    $('#editor').on('paste', function() {     
         $('#editor').val(tokensToChar());
         document.getElementById('editor').setSelectionRange(cursor, cursor);
     });
 
     // Handle typed input
     $('#editor').on('keyup', function() {
+        if ($('#editor').val() == '') {
+            $('#btn-save').addClass('disabled');
+            $('#btn-save').on('click', null);
+        }
+        else {
+            $('#btn-save').removeClass('disabled');
+            $('#btn-save').on('click', function() {
+                var text = $('#editor').val();        
+                if ($('#id').val() == '') {
+                    $('#btn-save').text('Saving...');
+                    $.post(url+'/create', {content: text}, function(response) {
+                        var id = response.replace(/["']{1}/g, "");
+                        window.location.href = url+"/"+encodeURIComponent(id);
+                    });
+                }
+                else {
+                    $('#btn-save').text('Forking...');
+                    $.post(url+'/fork/'+$('#id').val(), {}, function(response) {
+                        var id = response.replace(/["']{1}/g, "");
+                        window.location.href = url+"/"+encodeURIComponent(id)+"/fork";
+                    });
+                }
+            });
+        }
         $('#editor').val(tokensToChar());
         document.getElementById('editor').setSelectionRange(cursor, cursor);
     });
@@ -86,25 +110,6 @@ Zepto(function() {
         else {
             $('.row, #editor').addClass('full');
             $('#btn-full').text('Minimize');
-        }
-    });
-
-    // Save file
-    $('#btn-save').on('click', function() {
-        var text = $('#editor').val();        
-        if ($('#id').val() == '') {
-            $('#btn-save').text('Saving...');
-            $.post(url+'/create', {content: text}, function(response) {
-                var id = response.replace(/["']{1}/g, "");
-                window.location.href = url+"/"+encodeURIComponent(id);
-            });
-        }
-        else {
-            $('#btn-save').text('Forking...');
-            $.post(url+'/fork/'+$('#id').val(), {}, function(response) {
-                var id = response.replace(/["']{1}/g, "");
-                window.location.href = url+"/"+encodeURIComponent(id)+"/fork";
-            });
         }
     });
 });
