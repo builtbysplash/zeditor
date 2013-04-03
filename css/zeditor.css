@@ -8,6 +8,10 @@
   margin-bottom: 0;
 }
 
+textarea[disabled] {
+    background-color: #eee;
+}
+
 #editor.full {
 	font-size: 36px;
 }

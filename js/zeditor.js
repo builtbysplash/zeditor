@@ -23,7 +23,7 @@ var replacements = {
     "neq":"≠",
     "powerset":"ℙ",
     "Delta":"Δ",
-    "Xi":"Ξ",
+    "xi":"Ξ",
     "leq":"≤",
     "geq":"≥",
     "imp":"⇒",
@@ -36,16 +36,26 @@ var replacements = {
     "inv":"⁻¹",
     "domr":"◁",
     "ranr":"▷",
-    "domar":"domar!",
-    "ranar":"ranar!",
+    "domar":"!",
+    "ranar":"!",
     "phi":"ϕ",
     "psi":"ψ"
 };
 
+var cursor;
+
+function replacer(replacement) {
+    var raw = replacement.substring(1);
+    cursor -= raw.length;
+    console.log(cursor);
+    return replacements[raw];
+}
+
 function tokensToChar() {
+    cursor = document.getElementById('editor').selectionStart;
     var text = $('#editor').val();
     for (var replacement in replacements) {
-        text = text.replace(new RegExp(':'+replacement, 'g'), replacements[replacement]);
+        text = text.replace(new RegExp(':'+replacement, 'g'), replacer);
     }
     return text;
 }
@@ -54,15 +64,17 @@ Zepto(function() {
     $('a:not(.zeditor-link)').on('click', function(e) {
         e.preventDefault();
     });
-    $('#editor').val(tokensToChar());
+
     // Handle input if pasted
     $('#editor').on('paste', function() {       
         $('#editor').val(tokensToChar());
+        document.getElementById('editor').setSelectionRange(cursor, cursor);
     });
 
     // Handle typed input
     $('#editor').on('keyup', function() {
         $('#editor').val(tokensToChar());
+        document.getElementById('editor').setSelectionRange(cursor, cursor);
     });
 
     // Full screen button
