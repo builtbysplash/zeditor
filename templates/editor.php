@@ -17,6 +17,19 @@
 
 </head>
 <body>
+  <!-- Modals -->
+  <div id="modal-help" class="reveal-modal tiny">
+    <h3>Help</h3>
+    <p class="light">Here are the possible macros.</p>
+    <ul id="help-macros"></ul>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+  <div id="modal-share" class="reveal-modal tiny">
+    <h3>Share</h3>
+    <p class="light">Share your work.</p>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
 
   <!-- Content -->
   <div id="container" class="row hidden">
@@ -43,6 +56,14 @@
             <li class="divider"></li>
             <li>
               <a href="#" id="btn-full">Maximize</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="#" id="btn-help">Help</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="#" id="btn-share">Share</a>
             </li>
           </ul>
         </section>

@@ -60,10 +60,34 @@ function tokensToChar() {
     return text;
 }
 
+function handleSaveButton() {
+    var text = $('#editor').val();        
+    if ($('#id').val() == '') {
+        $('#btn-save').text('Saving...');
+        $.post(url+'/create', {content: text}, function(response) {
+            var id = response.replace(/["']{1}/g, "");
+            window.location.href = url+"/"+encodeURIComponent(id);
+        });
+    }
+    else {
+        $('#btn-save').text('Forking...');
+        $.post(url+'/fork/'+$('#id').val(), {}, function(response) {
+            var id = response.replace(/["']{1}/g, "");
+            window.location.href = url+"/"+encodeURIComponent(id)+"/fork";
+        });
+    }
+}
+
 Zepto(function() {
+    // Prevent default link behaviour
     $('a:not(.zeditor-link)').on('click', function(e) {
         e.preventDefault();
     });
+
+    // Activate Fork button
+    if ($('#editor').val() != '') {
+        $('#btn-save').on('click', handleSaveButton);
+    }
 
     // Handle input if pasted
     $('#editor').on('paste', function() {     
@@ -75,27 +99,11 @@ Zepto(function() {
     $('#editor').on('keyup', function() {
         if ($('#editor').val() == '') {
             $('#btn-save').addClass('disabled');
-            $('#btn-save').on('click', null);
+            $('#btn-save').off('click');
         }
         else {
             $('#btn-save').removeClass('disabled');
-            $('#btn-save').on('click', function() {
-                var text = $('#editor').val();        
-                if ($('#id').val() == '') {
-                    $('#btn-save').text('Saving...');
-                    $.post(url+'/create', {content: text}, function(response) {
-                        var id = response.replace(/["']{1}/g, "");
-                        window.location.href = url+"/"+encodeURIComponent(id);
-                    });
-                }
-                else {
-                    $('#btn-save').text('Forking...');
-                    $.post(url+'/fork/'+$('#id').val(), {}, function(response) {
-                        var id = response.replace(/["']{1}/g, "");
-                        window.location.href = url+"/"+encodeURIComponent(id)+"/fork";
-                    });
-                }
-            });
+            $('#btn-save').on('click', handleSaveButton);
         }
         $('#editor').val(tokensToChar());
         document.getElementById('editor').setSelectionRange(cursor, cursor);
@@ -111,6 +119,21 @@ Zepto(function() {
             $('.row, #editor').addClass('full');
             $('#btn-full').text('Minimize');
         }
+    });
+
+    // Populate help macros
+    for (var replacement in replacements) {
+        $('#help-macros').append('<li>:'+replacement+'→'+replacements[replacement]+'</li>');
+    }   
+
+    // Help button
+    $('#btn-help').on('click', function() {
+        $('#modal-help').foundation('reveal', 'open');
+    });
+
+    // Share button
+    $('#btn-share').on('click', function() {
+        $('#modal-share').foundation('reveal', 'open');
     });
 
     $('#editor').focus();
