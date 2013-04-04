@@ -2,6 +2,10 @@
     opacity: 0;
 }
 
+#help-macros li {
+    width: 25%;
+}
+
 #editor {
   font-family: 'DejaVu Sans Mono', 'Consolas', monospace;
   position: relative;
@@ -36,7 +40,7 @@ form {
 
 p.light {
 	color: #aaa;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 form.modal, form.modal * {

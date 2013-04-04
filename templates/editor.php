@@ -21,13 +21,14 @@
   <div id="modal-help" class="reveal-modal tiny">
     <h3>Help</h3>
     <p class="light">Here are the possible macros.</p>
-    <ul id="help-macros"></ul>
+    <ul id="help-macros" class="inline-list"></ul>
     <a class="close-reveal-modal">&#215;</a>
   </div>
 
   <div id="modal-share" class="reveal-modal tiny">
     <h3>Share</h3>
     <p class="light">Share your work.</p>
+    <input type="text" id="share-url" />
     <a class="close-reveal-modal">&#215;</a>
   </div>
 
@@ -61,10 +62,12 @@
             <li>
               <a href="#" id="btn-help">Help</a>
             </li>
+            <?php if ($id != '') { ?>
             <li class="divider"></li>
             <li>
               <a href="#" id="btn-share">Share</a>
             </li>
+            <?php } ?>
           </ul>
         </section>
       </nav>     

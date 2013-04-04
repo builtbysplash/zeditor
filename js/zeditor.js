@@ -124,7 +124,13 @@ Zepto(function() {
     // Populate help macros
     for (var replacement in replacements) {
         $('#help-macros').append('<li>:'+replacement+'→'+replacements[replacement]+'</li>');
-    }   
+    }
+
+    // Populate share input
+    $('#share-url').val(window.location.href);
+    $('#share-url').on('click', function() {
+        document.getElementById('share-url').select();
+    });
 
     // Help button
     $('#btn-help').on('click', function() {
