@@ -3,11 +3,16 @@ require 'vendor/autoload.php';
 
 $app = new \Slim\Slim();
 
+// Define constants
 define('URL', 'http://localhost/zeditor');
+define('HOST', 'localhost');
+define('DBNAME', 'zeditor');
+define('USER', 'root');
+define('PASS', '');
 
 function createNewZed($content, $pdo = null) {
     if ($pdo == null) {
-        $pdo = new PDO("mysql:host=localhost;dbname=zeditor", 'root', '');
+        $pdo = new PDO('mysql:host=' . HOST . ';dbname=' . DBNAME, USER, PASS);
     }
     $pdo->query("set names utf8");
     $unique = false;
@@ -34,7 +39,7 @@ function createNewZed($content, $pdo = null) {
 
 $app->get('/(:id)', function($id = null) use ($app) {
     if ($id != null) {
-        $pdo = new PDO("mysql:host=localhost;dbname=zeditor", 'root', '');
+        $pdo = new PDO('mysql:host=' . HOST . ';dbname=' . DBNAME, USER, PASS);
         $pdo->query("set names utf8");
         $query = $pdo->prepare("select content from zed where id=:id");
         $query->bindParam(':id', $id);
@@ -49,7 +54,7 @@ $app->get('/(:id)', function($id = null) use ($app) {
 });
 
 $app->get('/:id/fork', function($id) use ($app) {
-    $pdo = new PDO("mysql:host=localhost;dbname=zeditor", 'root', '');
+    $pdo = new PDO('mysql:host=' . HOST . ';dbname=' . DBNAME, USER, PASS);
     $pdo->query("set names utf8");
     $query = $pdo->prepare("select content from zed where id=:id");
     $query->bindParam(':id', $id);
@@ -57,6 +62,10 @@ $app->get('/:id/fork', function($id) use ($app) {
     $content = $query->fetchColumn(0);
     $pdo = null;
     $app->render('editor.php', array('id' => '', 'content' => $content));
+});
+
+$app->get('/hello', function() {
+    echo 'hello world!';
 });
 
 $app->post('/create', function() {
@@ -67,7 +76,7 @@ $app->post('/create', function() {
 });
 
 $app->post('/fork/:id', function($id) {
-    // Fork echo json_encode($id);Z content
+    // Fork Z content
     $pdo = new PDO("mysql:host=localhost;dbname=zeditor", 'root', '');
     $pdo->query("set names utf8");
     $query = $pdo->prepare("select content from zed where id=:id");

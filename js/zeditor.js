@@ -47,7 +47,6 @@ var cursor;
 function replacer(replacement) {
     var raw = replacement.substring(1);
     cursor -= raw.length;
-    console.log(cursor);
     return replacements[raw];
 }
 
@@ -83,6 +82,9 @@ Zepto(function() {
     $('a:not(.zeditor-link)').on('click', function(e) {
         e.preventDefault();
     });
+
+    // Set height to browser height%
+    $('#editor').height($(window).height() - 100);
 
     // Activate Fork button
     if ($('#editor').val() != '') {

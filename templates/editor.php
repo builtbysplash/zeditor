@@ -85,7 +85,7 @@
         <div class="large-12 columns">
           <p>
             <span>&copy; Copyright no one at all.</span>
-            <a class="zeditor-link" href="#">Built by Splash</a>
+            <!-- <a class="zeditor-link" href="#">Mario</a> -->
           </p>
         </div>
       </footer>
