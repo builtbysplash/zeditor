@@ -70,10 +70,8 @@ function handleSaveButton() {
     }
     else {
         $('#btn-save').text('Forking...');
-        $.post(url+'/fork/'+$('#id').val(), {}, function(response) {
-            var id = response.replace(/["']{1}/g, "");
-            window.location.href = url+"/"+encodeURIComponent(id)+"/fork";
-        });
+        var id = $('#id').val();
+        window.location.href = url+"/"+encodeURIComponent(id)+"/fork";
     }
 }
 

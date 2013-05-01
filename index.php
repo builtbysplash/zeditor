@@ -75,17 +75,4 @@ $app->post('/create', function() {
     echo json_encode($id);
 });
 
-$app->post('/fork/:id', function($id) {
-    // Fork Z content
-    $pdo = new PDO("mysql:host=localhost;dbname=zeditor", 'root', '');
-    $pdo->query("set names utf8");
-    $query = $pdo->prepare("select content from zed where id=:id");
-    $query->bindParam(':id', $id);
-    $query->execute();
-    $content = $query->fetchColumn(0);
-    $id = createNewZed($content, $pdo);
-    $pdo = null;
-    echo json_encode($id);
-});
-
 $app->run();
